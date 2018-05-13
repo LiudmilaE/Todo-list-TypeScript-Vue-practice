@@ -61,6 +61,7 @@ export default Vue.extend({
 ul {
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 2px 3px rgba(0,0,0,0.23);
     padding: 0;
+    text-align: left;
 }
 
 li {
@@ -69,7 +70,14 @@ li {
     line-height: 1.5;
 }
 
-li > span::after {
+li > div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+li > div > span::after {
     margin-left: 5px;
     cursor: pointer;
     content: url('data:image/svg+xml; utf8, <svg enable-background="new 0 0 512 512" height="15px" id="Layer_1" version="1.0" viewBox="0 0 512 512" width="18px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><polygon points="445.2,109.2 402.8,66.8 256,213.6 109.2,66.8 66.8,109.2 213.6,256 66.8,402.8 109.2,445.2 256,298.4 402.8,445.2   445.2,402.8 298.4,256 "/></svg>');

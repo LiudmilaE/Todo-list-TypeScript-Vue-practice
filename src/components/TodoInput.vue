@@ -18,7 +18,7 @@ export default Vue.extend({
   },
   methods: {
       addTodo() {
-        this.$emit('addItem', this.newTodo);
+        this.$emit('addItem', { label: this.newTodo, isCompleted: false });
         this.newTodo = '';
       }
   }
