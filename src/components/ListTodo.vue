@@ -2,7 +2,13 @@
     <div class="container">
         <h2>This is your TODO list!</h2>
         <ul v-if="todos && todos.length">
-            <li v-for="(todo, i) in todos" :key="i" :todo="todo">{{todo}}<span @click="deleteItem(i)"></span></li>
+            <li v-for="(todo, i) in todos" :key="i" :todo="todo">
+                <div>
+                    <input type="checkbox" :value="todo.isCompleted"/>
+                    {{todo.label}}
+                    <span @click="deleteItem(i)"></span>
+                </div>
+                </li>
         </ul>
         <p v-else>Your TODO list is empty. Please add new tasks!</p>   
         <todo-input @addItem="addTodo($event)"></todo-input>    
@@ -16,9 +22,11 @@ import TodoInput from './TodoInput.vue';
 export default Vue.extend({
     data() {
         return {
-            todo: '',
-            todos: ["Write code for TODO project",
-            "Learn French till level C1 at least"],
+            todo: { label: '', isCompleted: false },
+            todos: [
+                {label: "Write code for TODO project", isCompleted: false},
+                {label:"Learn a new foreign language", isCompleted: false }
+            ],
         }
     },
     methods: {
@@ -39,15 +47,27 @@ export default Vue.extend({
 
 <style scoped>
 .container {
-    padding: 10px;
+    margin: auto;
     font-size: 20px;
+    width: 500px;
+    box-sizing: border-box;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    text-align: center;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
 }
 
-/* li {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-} */
+ul {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 2px 3px rgba(0,0,0,0.23);
+    padding: 0;
+}
+
+li {
+    width: 300px;
+    list-style: none;
+    line-height: 1.5;
+}
 
 li > span::after {
     margin-left: 5px;
