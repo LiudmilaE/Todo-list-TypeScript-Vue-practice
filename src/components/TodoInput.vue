@@ -1,9 +1,8 @@
 <template>
   <div>
       <form @submit.prevent="addTodo">
-          <input type="text" v-model="newTodo"/>
+          <input type="text" v-model="newTodo" placeholder="What need to be done?" @keyup.enter="addTodo"/>
       </form>
-      <p>To add a new todo - fill in input below and press enter</p>
   </div>
 </template>
 
@@ -18,7 +17,8 @@ export default Vue.extend({
   },
   methods: {
       addTodo() {
-        this.$emit('addItem', { label: this.newTodo, isCompleted: false });
+        var value = this.newTodo && this.newTodo.trim()
+        this.$emit('addItem', { label: value, isCompleted: false });
         this.newTodo = '';
       }
   }
