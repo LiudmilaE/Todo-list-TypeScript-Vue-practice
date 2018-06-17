@@ -1,7 +1,7 @@
 <template>
   <div>
       <form @submit.prevent="addTodo">
-          <input type="text" v-model="newTodo" placeholder="What need to be done?" @keyup.enter="addTodo"/>
+          <input type="text" v-model="newTodo" placeholder="What needs to be done?" @keyup.enter="addTodo"/>
       </form>
   </div>
 </template>
@@ -31,8 +31,10 @@ export default Vue.extend({
         padding: 12px 20px;
         margin: 8px 0;
         display: inline-block;
-        border: 1px solid #ccc;
+        border: none;
+        background-color: transparent;
         border-radius: 4px;
         box-sizing: border-box;
+        font-size: inherit;
     }
 </style>
